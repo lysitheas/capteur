@@ -1,14 +1,5 @@
 <?php
-
-setlocale (LC_TIME, 'fr_FR.utf8','fra'); 
-try
-{
-    $bdd = new PDO('mysql:host=localhost;dbname=capteur;charset=utf8', 'capteur', 'europ');
-}
-catch (Exception $e)
-{
-        die('Erreur : ' . $e->getMessage());
-}
+include ("include_codb.php");
 
 ?>
 
@@ -28,7 +19,7 @@ catch (Exception $e)
 
 
 echo "Connexion a la base réussite:";
-echo "<br/> table : Element";
+echo "<br/><h3> table : Element</h3>";
 
 $req_data = $bdd-> prepare('SELECT * FROM Element');
 
@@ -68,6 +59,46 @@ fclose($fp);
 Download CSV</a>
 
 
+<h3>table : loramote</h3>
+<?php
+
+$req_dataL = $bdd-> prepare('SELECT * FROM loramote');
+
+$req_dataL->execute();
+
+echo "<table>";
+?>
+	<tr>
+		<td>id</td>
+		<td>sequence</td>
+		<td>ladate</td>
+		<td>node</td>
+		<td>chan</td>
+		<td>frequence</td>
+		<td>bandwidth</td>
+		<td>adr</td>
+		<td>sf</td>
+		<td>rssidbm</td>
+		<td>snrdb</td>
+		<td>leport</td>
+		<td>lesdata</td>
+
+	</tr>
+<?php
+$classesTD = array('impaire', 'paire');
+$nombre = count($classesTD);
+$compteur = 0;
+
+
+while($ld= $req_dataL->fetch())
+{
+	echo "<tr class='" . $classesTD[ $compteur % $nombre] . "'>";
+	echo "<td>" . $ld['id'] . "</td><td>" . $ld['sequence'] . "</td><td>" . $ld['ladate'] . "</td><td>" . $ld['node'] . "</td><td>" . $ld['chan'] . "</td><td>" . $ld['fequence'] . "</td><td>" . $ld['bandwidth'] . "</td><td>" . $ld['adr'] . "</td><td>" . $ld['sfval'] . "</td><td>" . $ld['rssidbm'] . "</td><td>" . $ld['snrdb'] . "</td><td>" . $ld['leport'] . "</td><td>" . $ld['lesdata'] . "</td><tr>";
+$compteur++;	
+}
+
+?>
+</table>
 </body>
 
 
