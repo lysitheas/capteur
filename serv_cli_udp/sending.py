@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding:uft8 -*-
+# -*- coding: utf-8 -*-
 
 import sys
 import MySQLdb
@@ -10,8 +10,10 @@ print "This is ths send UDP paquet program"
 
 UDP_IP = "127.0.0.1"
 UDP_PORT = 5005
-MESSAGE = input("message : ")
+MESSAGE = raw_input("Tapez votre message : ")
 
+print "Envoie de '", MESSAGE, "'"
+	
 print "UDP Target ip : ", UDP_IP
 print "UDP Targer port : ",UDP_PORT
 print "message :", MESSAGE

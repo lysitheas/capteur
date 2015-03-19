@@ -19,6 +19,7 @@ except MySQLdb.Error, e:
 print ("Connexion à la base de donneés réussite=)")
 
 val = input("taper valeur a saisir dans le base :")
+print val
 try:
 	cursor = conn.cursor ()
 	
