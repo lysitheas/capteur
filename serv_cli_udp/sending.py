@@ -9,7 +9,7 @@ import time
 print "This is ths send UDP paquet program"
 
 UDP_IP = "127.0.0.1"
-UDP_PORT = "5005"
+UDP_PORT = 5005
 MESSAGE = input("message : ")
 
 print "UDP Target ip : ", UDP_IP
