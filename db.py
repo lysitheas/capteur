@@ -7,7 +7,9 @@ import sys
 import MySQLdb
 import time
 print time.strftime('%d/%m/%y %H:%M',time.localtime())
+
 aujourdui = time.strftime('%d/%m/%y %H:%M:%S',time.localtime())
+print "tentative de connexion a la base"
 try:
 	conn = MySQLdb.connect(host = "localhost", user = "capteur", passwd = "europ", db= "capteur")
 except MySQLdb.Error, e:
